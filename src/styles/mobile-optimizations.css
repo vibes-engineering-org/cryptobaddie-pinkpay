@@ -1,0 +1,189 @@
+/* Mobile and Low-Bandwidth Optimizations for African Markets */
+
+/* Reduce unnecessary animations and transitions for low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize for touch interactions on mobile */
+@media (max-width: 768px) {
+  /* Increase touch targets for better mobile UX */
+  button, 
+  [role="button"], 
+  input, 
+  select, 
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reduce spacing for mobile screens */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+  
+  /* Optimize table display for mobile */
+  .table-mobile-stack {
+    display: block;
+  }
+  
+  .table-mobile-stack thead {
+    display: none;
+  }
+  
+  .table-mobile-stack tbody {
+    display: block;
+  }
+  
+  .table-mobile-stack tr {
+    display: block;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+  }
+  
+  .table-mobile-stack td {
+    display: block;
+    text-align: left !important;
+    border: none;
+    padding: 0.25rem 0;
+  }
+  
+  .table-mobile-stack td:before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    color: #64748b;
+  }
+}
+
+/* Low bandwidth optimizations */
+@media (max-width: 480px) {
+  /* Reduce grid columns on very small screens */
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .md\:grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Simplify complex layouts */
+  .flex {
+    flex-direction: column;
+  }
+  
+  .flex.items-center {
+    align-items: stretch;
+  }
+  
+  /* Reduce padding for more content space */
+  .px-4 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .py-6 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+/* Performance optimizations */
+.crypto-offramp-container {
+  /* Enable hardware acceleration for smooth scrolling */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  
+  /* Optimize repaints */
+  will-change: transform;
+}
+
+/* Lazy loading placeholder styles */
+.loading-placeholder {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Offline indicator */
+.offline-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #f59e0b;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  z-index: 9999;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.offline-indicator.show {
+  transform: translateY(0);
+}
+
+/* Connection quality indicators */
+.connection-fast {
+  color: #10b981;
+}
+
+.connection-slow {
+  color: #f59e0b;
+}
+
+.connection-offline {
+  color: #ef4444;
+}
+
+/* Reduced motion for low-end devices */
+.reduce-motion {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Text sizing for better readability on small screens */
+@media (max-width: 380px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+  
+  h3 {
+    font-size: 1.125rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .text-xs {
+    font-size: 0.75rem;
+  }
+}
