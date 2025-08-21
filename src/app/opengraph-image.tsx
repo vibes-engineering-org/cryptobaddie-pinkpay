@@ -26,7 +26,7 @@ export default async function Image() {
           overflow: "hidden",
         }}
       >
-        {/* Background gradient with Farcaster purple and electric blue */}
+        {/* Background gradient with pink and purple for financial services */}
         <div
           style={{
             position: "absolute",
@@ -34,7 +34,7 @@ export default async function Image() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: "linear-gradient(135deg, #8A63D2 0%, #1E90FF 100%)",
+            background: "linear-gradient(135deg, #EC4899 0%, #8B5CF6 50%, #06B6D4 100%)",
             opacity: 0.9,
           }}
         />
@@ -48,7 +48,7 @@ export default async function Image() {
             right: 0,
             bottom: 0,
             backgroundImage:
-              "radial-gradient(circle at 20% 80%, rgba(138, 99, 210, 0.4) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(30, 144, 255, 0.4) 0%, transparent 50%)",
+              "radial-gradient(circle at 25% 25%, rgba(236, 72, 153, 0.3) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.3) 0%, transparent 50%)",
           }}
         />
 
@@ -141,19 +141,89 @@ export default async function Image() {
           {/* Project description */}
           <p
             style={{
-              fontSize: "36px",
+              fontSize: "32px",
               fontWeight: "600",
               color: "rgba(255, 255, 255, 0.95)",
               textAlign: "center",
-              marginBottom: "56px",
+              marginBottom: "40px",
               lineHeight: 1.3,
               textShadow: "0 3px 12px rgba(0, 0, 0, 0.4)",
-              maxWidth: "800px",
+              maxWidth: "900px",
               fontFamily: "system-ui, -apple-system, sans-serif",
             }}
           >
             {PROJECT_DESCRIPTION}
           </p>
+
+          {/* Currency badges */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "20px",
+              marginBottom: "40px",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {/* Crypto badges */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "12px 24px",
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderRadius: "30px",
+                border: "2px solid rgba(255, 255, 255, 0.3)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "700",
+                  color: "#ffffff",
+                  fontFamily: "system-ui, -apple-system, sans-serif",
+                }}
+              >
+                USDC • USDT • ETH • BTC
+              </span>
+            </div>
+
+            <div
+              style={{
+                fontSize: "28px",
+                color: "rgba(255, 255, 255, 0.8)",
+                fontWeight: "400",
+              }}
+            >
+              →
+            </div>
+
+            {/* Fiat badges */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "12px 24px",
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderRadius: "30px",
+                border: "2px solid rgba(255, 255, 255, 0.3)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "700",
+                  color: "#ffffff",
+                  fontFamily: "system-ui, -apple-system, sans-serif",
+                }}
+              >
+                KSH • TZS • NGN • M-Pesa
+              </span>
+            </div>
+          </div>
 
           {/* Farcaster branding element */}
           <div
