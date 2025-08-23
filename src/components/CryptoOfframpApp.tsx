@@ -27,7 +27,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-pink-100">
       <div className="w-full max-w-7xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
@@ -58,7 +58,7 @@ function AppContent() {
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-3 bg-pink-100 border-pink-200">
             <TabsTrigger value="offramp">Pay</TabsTrigger>
             <TabsTrigger value="kyc">KYC Verification</TabsTrigger>
             <TabsTrigger value="history">Transaction History</TabsTrigger>
@@ -102,7 +102,7 @@ function AppContent() {
 
         {/* Features Overview */}
         <div className="mt-12 grid md:grid-cols-3 gap-6">
-          <Card>
+          <Card className="border-pink-200 bg-pink-50/50">
             <CardHeader>
               <CardTitle className="text-lg text-primary">Multi-Currency Support</CardTitle>
             </CardHeader>
@@ -113,7 +113,7 @@ function AppContent() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-pink-200 bg-pink-50/50">
             <CardHeader>
               <CardTitle className="text-lg text-primary">M-Pesa Integration</CardTitle>
             </CardHeader>
@@ -124,7 +124,7 @@ function AppContent() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-pink-200 bg-pink-50/50">
             <CardHeader>
               <CardTitle className="text-lg text-primary">Secure & Compliant</CardTitle>
             </CardHeader>
@@ -137,7 +137,7 @@ function AppContent() {
         </div>
 
         {/* Mobile Optimization Notice */}
-        <div className="mt-8 p-4 bg-muted rounded-lg">
+        <div className="mt-8 p-4 bg-pink-100/70 border border-pink-200 rounded-lg">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
