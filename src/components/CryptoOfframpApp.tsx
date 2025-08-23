@@ -7,6 +7,7 @@ import { Badge } from "~/components/ui/badge";
 import { Alert, AlertDescription } from "~/components/ui/alert";
 import CryptoOfframp from "./CryptoOfframp";
 import LanguageSelector from "./LanguageSelector";
+import PinkPayLogo from "./PinkPayLogo";
 import { LanguageProvider, useLanguage } from "~/hooks/use-language";
 import { useMiniAppSdk } from "~/hooks/use-miniapp-sdk";
 
@@ -26,11 +27,13 @@ function AppContent() {
       <div className="w-full max-w-7xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="fancy-font text-4xl text-primary">Pink Pay</h1>
-            <p className="playful-font text-lg text-primary/80 mt-1">
-              Off-ramp crypto to Kenyan Shilling, Tanzanian Shilling, and Nigerian Naira
-            </p>
+          <div className="flex items-center gap-6">
+            <PinkPayLogo size="lg" />
+            <div>
+              <p className="playful-font text-lg text-primary/80">
+                Off-ramp crypto to Kenyan Shilling, Tanzanian Shilling, and Nigerian Naira
+              </p>
+            </div>
           </div>
           <div className="flex items-center gap-4">
             <LanguageSelector />
