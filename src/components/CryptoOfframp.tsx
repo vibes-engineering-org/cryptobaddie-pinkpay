@@ -29,17 +29,22 @@ interface PayoutMethod {
   available: boolean;
 }
 
+const SUPPORTED_NETWORKS = [
+  { id: "base", name: "Base", chainId: 8453 },
+  { id: "celo", name: "Celo", chainId: 42220 },
+  { id: "optimism", name: "Optimism", chainId: 10 },
+];
+
 const CRYPTOCURRENCIES = [
   { symbol: "USDC", name: "USD Coin", address: "0xA0b86a33E6411a3200BFD10e8f71030B5b4e21E8", decimals: 6 },
   { symbol: "USDT", name: "Tether USD", address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", decimals: 6 },
   { symbol: "ETH", name: "Ethereum", address: "native", decimals: 18 },
-  { symbol: "BTC", name: "Bitcoin", address: "native", decimals: 8 },
 ];
 
 const FIAT_CURRENCIES = [
-  { code: "KSH", name: "Kenyan Shilling", flag: "🇰🇪" },
-  { code: "TZS", name: "Tanzanian Shilling", flag: "🇹🇿" },
-  { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬" },
+  { code: "KES", name: "Kenyan Shilling" },
+  { code: "TZS", name: "Tanzanian Shilling" },
+  { code: "NGN", name: "Nigerian Naira" },
 ];
 
 const PAYOUT_METHODS: PayoutMethod[] = [
@@ -47,7 +52,7 @@ const PAYOUT_METHODS: PayoutMethod[] = [
     id: "mpesa_ke",
     name: "M-Pesa Kenya",
     type: "mpesa",
-    currency: "KSH",
+    currency: "KES",
     fees: 2.5,
     processingTime: "1-5 minutes",
     available: true,
@@ -74,8 +79,9 @@ const PAYOUT_METHODS: PayoutMethod[] = [
 
 export default function CryptoOfframp() {
   const { address, isConnected } = useAccount();
+  const [selectedNetwork, setSelectedNetwork] = useState<string>("base");
   const [selectedCrypto, setSelectedCrypto] = useState<string>("");
-  const [selectedFiat, setSelectedFiat] = useState<string>("KSH");
+  const [selectedFiat, setSelectedFiat] = useState<string>("KES");
   const [selectedPayout, setSelectedPayout] = useState<string>("mpesa_ke");
   const [amount, setAmount] = useState<string>("");
   const [exchangeRates, setExchangeRates] = useState<ExchangeRate[]>([]);
@@ -88,10 +94,10 @@ export default function CryptoOfframp() {
   useEffect(() => {
     const fetchRates = () => {
       const mockRates: ExchangeRate[] = [
-        { from: "USDC", to: "KSH", rate: 129.50, lastUpdated: new Date() },
-        { from: "USDT", to: "KSH", rate: 129.45, lastUpdated: new Date() },
-        { from: "ETH", to: "KSH", rate: 324500.00, lastUpdated: new Date() },
-        { from: "BTC", to: "KSH", rate: 6820000.00, lastUpdated: new Date() },
+        { from: "USDC", to: "KES", rate: 129.50, lastUpdated: new Date() },
+        { from: "USDT", to: "KES", rate: 129.45, lastUpdated: new Date() },
+        { from: "ETH", to: "KES", rate: 324500.00, lastUpdated: new Date() },
+        { from: "BTC", to: "KES", rate: 6820000.00, lastUpdated: new Date() },
         { from: "USDC", to: "TZS", rate: 2650.00, lastUpdated: new Date() },
         { from: "USDT", to: "TZS", rate: 2649.50, lastUpdated: new Date() },
         { from: "ETH", to: "TZS", rate: 6634000.00, lastUpdated: new Date() },
@@ -153,9 +159,9 @@ export default function CryptoOfframp() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-primary">Multi-Currency Offramping</CardTitle>
+          <CardTitle className="text-primary">Pink Pay - Crypto Off-ramp</CardTitle>
           <CardDescription>
-            Convert cryptocurrency to Kenyan Shillings (KES), Tanzanian Shillings (TZS), or Nigerian Naira (NGN) via M-Pesa and bank transfers
+            Off-ramp from Base, Celo, and Optimism to Kenyan Shilling (KES), Tanzanian Shilling (TZS), and Nigerian Naira (NGN)
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -166,6 +172,26 @@ export default function CryptoOfframp() {
               </AlertDescription>
             </Alert>
           )}
+
+          {/* Network Selection */}
+          <div className="space-y-2">
+            <Label htmlFor="network-select">Select Network</Label>
+            <Select value={selectedNetwork} onValueChange={setSelectedNetwork}>
+              <SelectTrigger>
+                <SelectValue placeholder="Choose network" />
+              </SelectTrigger>
+              <SelectContent>
+                {SUPPORTED_NETWORKS.map((network) => (
+                  <SelectItem key={network.id} value={network.id}>
+                    <div className="flex items-center gap-2">
+                      <span className="font-medium">{network.name}</span>
+                      <span className="text-muted-foreground">Chain ID: {network.chainId}</span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
           {/* Cryptocurrency Selection */}
           <div className="space-y-2">
@@ -216,7 +242,6 @@ export default function CryptoOfframp() {
                 {FIAT_CURRENCIES.map((currency) => (
                   <SelectItem key={currency.code} value={currency.code}>
                     <div className="flex items-center gap-2">
-                      <span>{currency.flag}</span>
                       <span className="font-medium">{currency.code}</span>
                       <span className="text-muted-foreground">{currency.name}</span>
                     </div>

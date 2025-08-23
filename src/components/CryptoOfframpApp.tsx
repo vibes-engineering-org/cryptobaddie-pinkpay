@@ -3,18 +3,10 @@
 import { useState } from "react";
 import { useAccount } from "wagmi";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { Badge } from "~/components/ui/badge";
 import { Alert, AlertDescription } from "~/components/ui/alert";
 import CryptoOfframp from "./CryptoOfframp";
-import KYCCompliance from "./KYCCompliance";
-import TransactionHistory from "./TransactionHistory";
 import LanguageSelector from "./LanguageSelector";
-import RewardsSection from "./RewardsSection";
-import GameSection from "./GameSection";
-import MultiChainWithdraw from "./MultiChainWithdraw";
-import FinancialPlanner from "./FinancialPlanner";
 import { LanguageProvider, useLanguage } from "~/hooks/use-language";
 import { useMiniAppSdk } from "~/hooks/use-miniapp-sdk";
 
@@ -22,7 +14,6 @@ function AppContent() {
   const { address, isConnected } = useAccount();
   const { isSDKLoaded } = useMiniAppSdk();
   const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useState("rewards");
   const [kycStatus, setKycStatus] = useState<"none" | "pending" | "verified" | "rejected">("none");
 
   // Simulate checking KYC status based on wallet connection
@@ -36,9 +27,9 @@ function AppContent() {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="fancy-font text-4xl text-primary">The Crypto Baddie</h1>
+            <h1 className="fancy-font text-4xl text-primary">Pink Pay</h1>
             <p className="playful-font text-lg text-primary/80 mt-1">
-              Your joyful crypto companion - Offramp to KES, TZS, and NGN currencies!
+              Off-ramp crypto to Kenyan Shilling, Tanzanian Shilling, and Nigerian Naira
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -61,106 +52,57 @@ function AppContent() {
         )}
 
         {/* Main Content */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-6 bg-primary/20 border-primary/40">
-            <TabsTrigger value="rewards" className="playful-font">Rewards</TabsTrigger>
-            <TabsTrigger value="game" className="playful-font">Games</TabsTrigger>
-            <TabsTrigger value="withdraw" className="playful-font">Withdraw</TabsTrigger>
-            <TabsTrigger value="planner" className="playful-font">Planner</TabsTrigger>
-            <TabsTrigger value="offramp" className="playful-font">Pay</TabsTrigger>
-            <TabsTrigger value="history" className="playful-font">History</TabsTrigger>
-          </TabsList>
+        <div className="space-y-6">
+          {checkKYCRequired() && kycStatus !== "pending" && (
+            <Alert>
+              <AlertDescription>
+                You may need to complete verification to use payment services for larger amounts.
+              </AlertDescription>
+            </Alert>
+          )}
+          
+          {kycStatus === "pending" && (
+            <Alert>
+              <AlertDescription>
+                Your verification application is under review. You will be notified once complete.
+              </AlertDescription>
+            </Alert>
+          )}
 
-          <TabsContent value="rewards" className="space-y-6">
-            <RewardsSection />
-          </TabsContent>
-
-          <TabsContent value="game" className="space-y-6">
-            <GameSection />
-          </TabsContent>
-
-          <TabsContent value="withdraw" className="space-y-6">
-            <MultiChainWithdraw />
-          </TabsContent>
-
-          <TabsContent value="planner" className="space-y-6">
-            <FinancialPlanner />
-          </TabsContent>
-
-          <TabsContent value="offramp" className="space-y-6">
-            {checkKYCRequired() && kycStatus !== "pending" && (
-              <Alert>
-                <AlertDescription>
-                  You need to complete KYC verification to use payment services. 
-                  <Button 
-                    variant="link" 
-                    className="p-0 ml-2 h-auto"
-                    onClick={() => setActiveTab("kyc")}
-                  >
-                    Complete KYC now
-                  </Button>
-                </AlertDescription>
-              </Alert>
-            )}
-            
-            {kycStatus === "pending" && (
-              <Alert>
-                <AlertDescription>
-                  Your KYC application is under review. You will be notified once verification is complete.
-                </AlertDescription>
-              </Alert>
-            )}
-
-            <CryptoOfframp />
-          </TabsContent>
-
-          <TabsContent value="history" className="space-y-6">
-            <TransactionHistory />
-          </TabsContent>
-        </Tabs>
+          <CryptoOfframp />
+        </div>
 
         {/* Features Overview */}
-        <div className="mt-12 grid md:grid-cols-4 gap-6">
-          <Card className="border-primary/30 bg-gradient-to-br from-pink-100 to-purple-100">
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <Card className="border-primary/30 bg-gradient-to-br from-green-100 to-teal-100">
             <CardHeader>
-              <CardTitle className="playful-font text-lg text-primary">Earn $THECRYPTOBADDIE</CardTitle>
+              <CardTitle className="playful-font text-lg text-primary">Multi-Chain Support</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Every transaction earns you tokens. The more you use the app, the more you earn with tier-based multipliers!
+                Off-ramp from Base, Celo, and Optimism networks to KES, TZS, NGN via M-Pesa and Bank Transfers.
               </CardDescription>
             </CardContent>
           </Card>
 
           <Card className="border-primary/30 bg-gradient-to-br from-blue-100 to-indigo-100">
             <CardHeader>
-              <CardTitle className="playful-font text-lg text-primary">Play & Learn</CardTitle>
+              <CardTitle className="playful-font text-lg text-primary">Fast Payments</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Test your crypto knowledge with fun quizzes about stablecoins and offramping. Learn while you earn rewards!
+                Get your local currency in minutes with M-Pesa or bank transfers. Real-time exchange rates.
               </CardDescription>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/30 bg-gradient-to-br from-green-100 to-teal-100">
+          <Card className="border-primary/30 bg-gradient-to-br from-pink-100 to-purple-100">
             <CardHeader>
-              <CardTitle className="playful-font text-lg text-primary">MultiChain Offramping</CardTitle>
+              <CardTitle className="playful-font text-lg text-primary">Secure & Simple</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Offramp from Base, Celo, Optimism, Arbitrum, Gnosis to KES, TZS, NGN via M-Pesa & Bank Transfers.
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/30 bg-gradient-to-br from-yellow-100 to-orange-100">
-            <CardHeader>
-              <CardTitle className="playful-font text-lg text-primary">Financial Planning</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription>
-                Track your expenses, set budgets, create savings goals, and take control of your financial future.
+                Low fees, secure transactions, and an intuitive interface designed for African markets.
               </CardDescription>
             </CardContent>
           </Card>
@@ -172,7 +114,7 @@ function AppContent() {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
-            <span className="playful-font">Multi-currency offramping to KES, TZS, NGN - optimized for mobile across Africa!</span>
+            <span className="playful-font">Pink Pay - Off-ramp from Base, Celo, Optimism to KES, TZS, NGN</span>
           </div>
         </div>
       </div>
