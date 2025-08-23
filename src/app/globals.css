@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 @import "../styles/mobile-optimizations.css";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: "Inter", Helvetica, Arial, sans-serif;
+    font-family: "Poppins", "Inter", Helvetica, Arial, sans-serif;
+}
+
+.playful-font {
+    font-family: "Comfortaa", cursive;
+}
+
+.fancy-font {
+    font-family: "Pacifico", cursive;
 }
 
 * {
@@ -21,41 +30,41 @@ body {
 
 @layer base {
     :root {
-        --background: 330 40% 98%;
+        --background: 330 60% 85%;
         --foreground: 240 10% 3.9%;
-        --card: 330 50% 99%;
+        --card: 330 70% 90%;
         --card-foreground: 240 10% 3.9%;
-        --popover: 330 50% 99%;
+        --popover: 330 70% 90%;
         --popover-foreground: 240 10% 3.9%;
-        --primary: 330 81% 60%;
+        --primary: 330 90% 45%;
         --primary-foreground: 0 0% 98%;
-        --secondary: 330 40% 95%;
-        --secondary-foreground: 330 81% 25%;
-        --muted: 330 40% 95%;
+        --secondary: 330 60% 80%;
+        --secondary-foreground: 330 90% 20%;
+        --muted: 330 60% 80%;
         --muted-foreground: 240 3.8% 46.1%;
-        --accent: 330 40% 95%;
-        --accent-foreground: 330 81% 25%;
+        --accent: 330 60% 80%;
+        --accent-foreground: 330 90% 20%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --border: 330 40% 90%;
-        --input: 330 40% 90%;
-        --ring: 330 81% 60%;
+        --border: 330 60% 75%;
+        --input: 330 60% 75%;
+        --ring: 330 90% 45%;
         --radius: 0.75rem;
-        --chart-1: 330 81% 60%;
-        --chart-2: 320 70% 55%;
-        --chart-3: 340 65% 50%;
-        --chart-4: 310 75% 65%;
-        --chart-5: 350 80% 70%;
+        --chart-1: 330 90% 45%;
+        --chart-2: 320 80% 40%;
+        --chart-3: 340 85% 35%;
+        --chart-4: 310 95% 50%;
+        --chart-5: 350 100% 55%;
 
         --radius: 0.5rem;
-        --sidebar-background: 330 40% 98%;
+        --sidebar-background: 330 60% 85%;
         --sidebar-foreground: 240 5.3% 26.1%;
-        --sidebar-primary: 330 81% 60%;
+        --sidebar-primary: 330 90% 45%;
         --sidebar-primary-foreground: 0 0% 98%;
-        --sidebar-accent: 330 40% 95%;
-        --sidebar-accent-foreground: 330 81% 25%;
-        --sidebar-border: 330 40% 91%;
-        --sidebar-ring: 330 81% 60%;
+        --sidebar-accent: 330 60% 80%;
+        --sidebar-accent-foreground: 330 90% 20%;
+        --sidebar-border: 330 60% 76%;
+        --sidebar-ring: 330 90% 45%;
     }
     .dark {
         --background: 330 20% 8%;
