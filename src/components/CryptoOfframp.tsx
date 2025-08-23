@@ -153,9 +153,9 @@ export default function CryptoOfframp() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-primary">Crypto to Fiat Payments</CardTitle>
+          <CardTitle className="text-primary">Multi-Currency Offramping</CardTitle>
           <CardDescription>
-            Convert your cryptocurrency to local currency with M-Pesa and bank transfers
+            Convert cryptocurrency to Kenyan Shillings (KES), Tanzanian Shillings (TZS), or Nigerian Naira (NGN) via M-Pesa and bank transfers
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">

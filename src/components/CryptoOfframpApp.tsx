@@ -38,7 +38,7 @@ function AppContent() {
           <div>
             <h1 className="fancy-font text-4xl text-primary">The Crypto Baddie</h1>
             <p className="playful-font text-lg text-primary/80 mt-1">
-              Your joyful crypto companion - transact, earn, play, save!
+              Your joyful crypto companion - Offramp to KES, TZS, and NGN currencies!
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -145,11 +145,11 @@ function AppContent() {
 
           <Card className="border-primary/30 bg-gradient-to-br from-green-100 to-teal-100">
             <CardHeader>
-              <CardTitle className="playful-font text-lg text-primary">MultiChain Withdrawals</CardTitle>
+              <CardTitle className="playful-font text-lg text-primary">MultiChain Offramping</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Withdraw from Base, Celo, Optimism, Arbitrum, Gnosis to KSH via M-Pesa, Till Numbers, Paybill & more.
+                Offramp from Base, Celo, Optimism, Arbitrum, Gnosis to KES, TZS, NGN via M-Pesa & Bank Transfers.
               </CardDescription>
             </CardContent>
           </Card>
@@ -172,7 +172,7 @@ function AppContent() {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
-            <span className="playful-font">Your joyful crypto companion - optimized for mobile across Africa!</span>
+            <span className="playful-font">Multi-currency offramping to KES, TZS, NGN - optimized for mobile across Africa!</span>
           </div>
         </div>
       </div>
