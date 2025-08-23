@@ -32,9 +32,9 @@ function AppContent() {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">AfriCrypto Offramp</h1>
+            <h1 className="text-3xl font-bold text-primary">PinkPay</h1>
             <p className="text-muted-foreground mt-1">
-              Convert cryptocurrency to African fiat currencies
+              Secure crypto to fiat payments
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -59,7 +59,7 @@ function AppContent() {
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="offramp">Offramp</TabsTrigger>
+            <TabsTrigger value="offramp">Pay</TabsTrigger>
             <TabsTrigger value="kyc">KYC Verification</TabsTrigger>
             <TabsTrigger value="history">Transaction History</TabsTrigger>
           </TabsList>
@@ -68,7 +68,7 @@ function AppContent() {
             {checkKYCRequired() && kycStatus !== "pending" && (
               <Alert>
                 <AlertDescription>
-                  You need to complete KYC verification to use offramp services. 
+                  You need to complete KYC verification to use payment services. 
                   <Button 
                     variant="link" 
                     className="p-0 ml-2 h-auto"
@@ -104,7 +104,7 @@ function AppContent() {
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Multi-Currency Support</CardTitle>
+              <CardTitle className="text-lg text-primary">Multi-Currency Support</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
@@ -115,7 +115,7 @@ function AppContent() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">M-Pesa Integration</CardTitle>
+              <CardTitle className="text-lg text-primary">M-Pesa Integration</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
@@ -126,7 +126,7 @@ function AppContent() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Secure & Compliant</CardTitle>
+              <CardTitle className="text-lg text-primary">Secure & Compliant</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>

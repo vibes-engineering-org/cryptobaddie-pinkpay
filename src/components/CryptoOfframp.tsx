@@ -145,7 +145,7 @@ export default function CryptoOfframp() {
     // Simulate transaction processing
     setTimeout(() => {
       setIsLoading(false);
-      alert(`Offramp initiated! You will receive ${calculateFiatAmount()} ${selectedFiat} via ${selectedPayoutMethod?.name}`);
+      alert(`Payment initiated! You will receive ${calculateFiatAmount()} ${selectedFiat} via ${selectedPayoutMethod?.name}`);
     }, 2000);
   };
 
@@ -153,7 +153,7 @@ export default function CryptoOfframp() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Crypto to Fiat Offramp</CardTitle>
+          <CardTitle className="text-primary">Crypto to Fiat Payments</CardTitle>
           <CardDescription>
             Convert your cryptocurrency to local currency with M-Pesa and bank transfers
           </CardDescription>
@@ -162,7 +162,7 @@ export default function CryptoOfframp() {
           {!isConnected && (
             <Alert>
               <AlertDescription>
-                Please connect your wallet to continue with the offramp process.
+                Please connect your wallet to continue with the payment process.
               </AlertDescription>
             </Alert>
           )}
@@ -231,7 +231,7 @@ export default function CryptoOfframp() {
             <div className="p-3 bg-muted rounded-lg">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium">Exchange Rate</span>
-                <Badge variant="secondary">Live</Badge>
+                <Badge variant="default" className="bg-primary">Live</Badge>
               </div>
               <p className="text-lg font-semibold">
                 1 {selectedCrypto} = {getCurrentRate().toLocaleString()} {selectedFiat}
@@ -348,10 +348,10 @@ export default function CryptoOfframp() {
           <Button 
             onClick={handleOfframp}
             disabled={!isConnected || !amount || !selectedCrypto || isLoading || (!phoneNumber && selectedPayoutMethod?.type === "mpesa") || (!accountNumber && selectedPayoutMethod?.type === "bank")}
-            className="w-full"
+            className="w-full bg-primary hover:bg-primary/90"
             size="lg"
           >
-            {isLoading ? "Processing..." : "Start Offramp"}
+            {isLoading ? "Processing..." : "Send Payment"}
           </Button>
         </CardContent>
       </Card>
